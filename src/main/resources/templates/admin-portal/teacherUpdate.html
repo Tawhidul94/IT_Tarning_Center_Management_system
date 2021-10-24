@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Students</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/saveTeacher" method="POST" >
+		  	<h4>Update Teacher Account</h4>
+		  	
+		  	
+		  	<div class="row">
+		      <div class="col-25">
+		        <label for="teacherId">Teacher ID </label>
+		      </div>
+		  	 <div class="col-75">
+		        <input type="text" th:value="${teacher.teacherId}"  name="teacherId" placeholder="Student's first name" >
+		      </div>
+		      </div>
+		      
+		      
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="firstName">Teacher Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:value="${teacher.firstName}" id="firstName" name="firstName" placeholder="Student's first name" >
+		      </div>
+		    </div>
+		    
+		    
+		    
+		    
+		     <div class="row">
+		      <div class="col-25">
+		        <label for="email">Email</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="email" th:value="${teacher.email}" id="email" name="email" placeholder="Student's email address">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="Password">Password</label>
+		      </div>
+		    <div class="col-75">
+		        <input type="password" th:value="${teacher.password}" id="password" name="password" placeholder="Student's password" >
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="phone">Phone</label>
+		      </div>
+		    <div class="col-75">
+		        <input type="text" th:value="${teacher.phone}" id="phone" name="phone" placeholder="Student's phone" >
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="address">Address</label>
+		      </div>
+		    <div class="col-75">
+		        <input type="text" th:value="${teacher.address}" id="address" name="address" placeholder="Student's address" >
+		      </div>
+		    </div>
+		   <div class="row">
+		      <div class="col-25">
+		        <label for="lastName">Salary</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:value="${teacher.lastName}" id="lastName" name="lastName" placeholder="Student's last name" >
+		      </div>
+		    </div>
+		    <div class="row">	
+		      <input type="submit" value="Update">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+
+		    
+		 
+</body>
+</html>

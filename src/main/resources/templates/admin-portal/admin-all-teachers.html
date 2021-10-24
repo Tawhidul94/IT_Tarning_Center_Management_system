@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>All teachers</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+
+	
+		<div class="container">
+		<div th:if="${allTeachers!=null}">
+		<form class="example" th:action="@{/admin/findteacher}">
+     <input type="text" placeholder="Search.." name="search">
+     <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    
+    
+		<h4 style="text-align:center">Display All teachers</h4>
+			<table id="tablestyle">
+				<tr>
+					<th>Teacher ID</th>
+					<th>Teacher Name</th>
+					
+					<th>Email</th>
+					<th>password</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th>Salary</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+				<tr th:each="teacher : ${allTeachers}">
+					<td th:text="${teacher.teacherId}"></td>
+					<td th:text="${teacher.firstName}"></td>
+					
+					<td th:text="${teacher.email}"></td>
+					<td th:text="${teacher.password}"></td>
+					<td th:text="${teacher.phone}"></td>
+					<td th:text="${teacher.address}"></td>
+					<td th:text="${teacher.lastName}"></td>
+					<td><a th:href="@{'/admin/teacherUpdate/'+${teacher.teacherId}}">Update</a> </td>
+					<td><a th:href="@{'/admin/teacherDelete/'+${teacher.teacherId}}">Delete</a> </td>
+					
+				</tr>
+			</table>
+		</div>
+		
+		
+		
+
+    
+		
+		<div th:if="${fid!=null}">
+		<h4 style="text-align:center">Display search teachers</h4>
+			<table id="tablestyle">
+				<tr>
+					<th>Teacher ID</th>
+					<th>Teacher Name</th>
+					
+					<th>Email</th>
+					<th>password</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th>Salary</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+				<tr th:each="teacher : ${fid}">
+					<td th:text="${teacher.teacherId}"></td>
+					<td th:text="${teacher.firstName}"></td>
+					
+					<td th:text="${teacher.email}"></td>
+					<td th:text="${teacher.password}"></td>
+					<td th:text="${teacher.phone}"></td>
+					<td th:text="${teacher.address}"></td>
+					<td th:text="${teacher.lastName}"></td>
+					<td><a th:href="@{'/admin/teacherUpdate/'+${teacher.teacherId}}">Update</a> </td>
+					<td><a th:href="@{'/admin/teacherDelete/'+${teacher.teacherId}}">Delete</a> </td>
+					
+				</tr>
+			</table>
+</div>
+		
+		
+		
+	</div>
+
+
+</body>
+</html>

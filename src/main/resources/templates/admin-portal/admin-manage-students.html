@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Students</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+ <ul th:replace="Layout :: adminNavBar"></ul>
+ 
+	
+		<div class="container">
+		  <form action="/admin/saveStudent" method="POST" th:object="${student}">
+		  
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="firstName">Student Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:field="${student.firstName}" id="firstName" name="firstName" placeholder="Student's first name" required="required">
+		      </div>
+		    </div>
+		    
+		    
+		    
+		     <div class="row">
+		      <div class="col-25">
+		        <label for="email">Email</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="email" th:field="${student.email}" id="email" name="email" placeholder="Student's email address" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="Password">Password</label>
+		      </div>
+		    <div class="col-75">
+		        <input type="password" th:field="${student.password}" id="password" name="password" placeholder="Student's password" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="phone">Phone</label>
+		      </div>
+		    <div class="col-75">
+		        <input type="text" th:field="${student.phone}" id="phone" name="phone" placeholder="Student's phone" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="address">Address</label>
+		      </div>
+		    <div class="col-75">
+		        <input type="text" th:field="${student.address}" id="address" name="address" placeholder="Student's address" required="required">
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="admitionFee">Admission Fee</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="number" th:field="${student.admitionFee}" id="admitionFee" name="admitionFee" placeholder="Student's admitionFee" required="required">
+		      </div>
+		    </div>
+		    <div class="row">	
+		      <input type="submit" value="Create New Student">
+		    </div>  	
+		  </form>
+		</div>
+	
+</body>
+</html>

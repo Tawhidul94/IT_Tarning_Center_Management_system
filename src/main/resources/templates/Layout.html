@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+
+<ul th:fragment="studentNavBar">
+  <li><a href="/students">Dashboard</a></li>
+  <li><a href="/students/manageCourses">Manage Courses</a></li>
+  <li><a href="/students/displayGrades">Display Grades</a></li>
+  
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+<ul th:fragment="teacherNavBar">
+  <li><a href="/teachers">Dashboard</a></li>
+   <li><a href="/teachers/createNewCourse">Create new course</a></li>
+  <li><a href="/teachers/manageCourses"> courses Start</a></li>
+  <li><a href="/teachers//manageCoursesprogress"> courses progress</a></li>
+  <li><a href="/teachers/manageCoursesComplete">courses complete</a></li>
+  
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+<ul th:fragment="adminNavBar">
+  <li><a href="/admin">Dashboard</a></li>
+  <li><a href="/admin/ManageStudents">Create New students</a></li>
+   <li><a href="/admin/displayAllStudents">display All students</a></li>
+  <li><a href="/admin/ManageTeachers">Create New teachers</a></li>
+   <li><a href="/admin/displayAllTeachers">display All teachers</a></li>
+ 
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage ourse</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: teacherNavBar"></ul>
+
+<div class="container">
+		<h4>Course Status</h4>
+		
+			<table id="tablestyle">
+				<tr>
+					<th>Course name</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Max Students</th>
+					<th>Enrolled Students</th>	
+				</tr>
+				<tr>
+					<td th:text="${chosenCourse.courseName}"></td>
+					<td th:text="${chosenCourse.startDate}"></td>
+					<td th:text="${chosenCourse.endDate}"></td>
+					<td th:text="${chosenCourse.maxStudents}"></td>
+					<td th:text="${chosenCourse.students.size()}"></td>
+					
+									
+				</tr>
+			</table>
+		</div>
+
+	
+		<div class="container">
+		  	<h4>Change course stage</h4> 
+		     <div class="row">
+		      <div class="col-25password">
+		        <p>Current stage:</p>
+		      </div>
+		      <div class="col-75password">
+		        <p style="color:#2E8B57" th:text="${chosenCourse.stage}"></p>
+		      </div>
+		    </div>
+		   
+		   <form action="/teachers/saveCourseStage" method="POST">
+		   	 <div class="row">
+		    	  <div class="col-75">
+		        	<select name="updateStage">
+		        		<option th:value="NOTSTARTED">NOTSTARTED</option>
+		        		<option th:value="INPROGRESS">INPROGRESS</option>
+		        		<option th:value="COMPLETED">COMPLETED</option>
+		        	</select>
+		      	  </div>
+		      	<div class="col-25">
+		      		<input type="hidden" th:value="${chosenCourse.courseId}" th:name="chosenCourse">
+		       		<input  type="submit" th:value="Change"/>
+		     	</div>
+		     
+		   </div>
+		   	<p style="text-align:left">* Students can only enroll for courses that are "NOTSTARTED".</p>
+		</form>
+     </div>
+    
+    
+    	
+		<div class="container">
+		  	<h4>Student Grades</h4> 
+		     
+		     <div class="row">
+		     	<div class="colGradeName">
+		     		<b>Student name</b>
+		     	</div>
+		     	<div class="colGradeName">
+		     		<b>Email</b>
+		     	</div>
+		     	<div class="colGrade">
+		     		<b>Grade</b>
+		     	</div>
+		     	<div class="colSetGrade">
+		     		<b>Set grade</b>
+		     	</div>	
+		     </div>
+		     
+		    <form action="/teachers/setGrade" th:each="grade : ${grades}" method="POST">  
+		     <input type="hidden" th:value="${chosenCourse.courseId}" name="chosenCourse">
+		     <input type="hidden" th:value="${grade.gradeId}" name="gradeId">
+		     <div class="row">
+		      <div class="colGradeName">
+		        <p th:text="${grade.theStudent.firstName}"></p>
+		      </div>
+		      <div class="colGradeName">
+		        <p th:text="${grade.theStudent.email}"></p>
+		      </div>
+		        <div class="colGrade">
+		        <p th:text="${grade.grade}" ></p>
+		      </div>
+		        <div class="colsetGrade">
+		        <input style="width:40px; margin-top:6px;" type="number" name="courseGrade" step="any"/><input type="submit" value="Set">
+		      </div>
+		    </div>
+		   </form>
+		   
+		   
+		   </div>
+		
+	
+	
+</body>
+</html>

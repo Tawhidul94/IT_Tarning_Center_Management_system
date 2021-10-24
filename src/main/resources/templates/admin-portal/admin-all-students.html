@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>All students</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+
+      
+		<div class="container">
+		<div th:if="${allStudents!=null}">
+		<form class="example" th:action="@{/admin/find}">
+     <input type="text" placeholder="Search.." name="search">
+     <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+		<h4 style="text-align:center">Display All students</h4>
+		
+			<table id="tablestyle">
+				<tr>
+					<th>Student ID</th>
+					<th>Student Name</th>
+					<th>Email</th>
+					<th>Password</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th>Admission Fee</th>
+				
+					<th>CGPA</th>
+					
+					
+					<th>update</th>
+					<th>delete</th>
+					
+				</tr>
+				<tr th:each="student : ${allStudents}">
+					<td th:text="${student.studentId}"></td>
+					<td th:text="${student.firstName}"></td>
+					<td th:text="${student.email}"></td>
+					<td th:text="${student.password}"></td>
+					<td th:text="${student.phone}"></td>
+					<td th:text="${student.address}"></td>
+					<td th:text="${student.admitionFee}"></td>
+						<td th:text="${student.grades}"></td>
+				
+					
+					
+					<td><a th:href="@{'/admin/update/'+${student.studentId}}">Update</a></td> 
+					
+                   <td><a th:href="@{'/admin/delete/'+${student.studentId}}">Delete</a></td>
+                   
+				</tr>
+			</table>
+			</div>
+		
+
+
+ <div th:if="${fid!=null}">
+
+    
+		<h4 style="text-align:center">Display search Student</h4>
+		
+			<table id="tablestyle">
+			
+				<tr>
+					<th>Student ID</th>
+					<th>Student Name</th>
+					<th>Email</th>
+					<th>Password</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th>Admission Fee</th>
+					<th>Total Fee Fee</th>
+					<th>CGPA</th>
+					
+					
+					<th>update</th>
+					<th>delete</th>
+					
+				</tr>
+				<tr th:each="st :${fid}">
+					<td th:text="${st.studentId}"></td>
+					<td th:text="${st.firstName}"></td>
+					<td th:text="${st.email}"></td>
+					<td th:text="${st.password}"></td>
+					<td th:text="${st.phone}"></td>
+					<td th:text="${st.address}"></td>
+					<td th:text="${st.admitionFee}"></td>
+					
+					
+					
+					<td><a th:href="@{'/admin/update/'+${st.studentId}}">Update</a></td> 
+					
+                   <td><a th:href="@{'/admin/delete/'+${st.studentId}}">Delete</a></td>
+                   
+				</tr>
+			</table>
+</div>
+
+ </div>
+
+
+
+</body>
+</html>
