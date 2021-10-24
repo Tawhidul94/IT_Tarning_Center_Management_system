@@ -1,2 +1,3 @@
 # ITarning-Center-Management
- springBoot
+Backend:springBoot,Hibernate With Jpa,Mysql.
+Fontend:Thymeleaf,css,html
